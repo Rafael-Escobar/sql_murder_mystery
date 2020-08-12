@@ -55,12 +55,12 @@ Result:
 |Annabel Miller|16371|I saw the murder happen, and I recognized the killer from my gym when I was working out last week on January the 9th.|
 
 #### Verifying what Morty Schapiro said
-.
+
 >'I heard a gunshot and then saw a man run out.  
 > He had a "Get Fit Now Gym" bag. The membership number on the bag started with "48Z".
 > Only gold members have those bags. The man got into a car with a plate that included "H42W".
 ##### Cheking __clue__: The man got into a car with a plate that included "H42W"
-.
+
 ~~~sql
 SELECT 
 	p.name, p.id,
@@ -78,7 +78,7 @@ Result:
 |Jeremy Bowers|67318|423327|30|70|brown|brown|male|0H42W2|Chevrolet|Spark LS|
 |Maxine Whitely|78193|183779|21|65|blue|blonde|female|H42W0X|Toyota|Prius|
 ##### Cheking __clue__: He had a "Get Fit Now Gym" bag. The membership number on the bag started with "48Z". Only gold members have those bags.
-.
+
 ~~~sql
 SELECT * FROM get_fit_now_member WHERE id like '48Z%' AND membership_status='gold'
 ~~~
@@ -89,10 +89,10 @@ Result:
 |48Z55|67318|Jeremy Bowers|20160101|gold|
 
 #### Verifying what Annabel Miller said
-.
+
 >I saw the murder happen, and I recognized the killer from my gym when I was working out last week on January the 9th.
 ##### Cheking __clue__: I saw the murder happen, and I recognized the killer FROM my gym when I was working out last week on January the 9th.
-.
+
 ~~~sql
 SELECT 
 	m.id as membership_id,
@@ -150,7 +150,7 @@ Result:
 
 #### Verifying what __Jeremy Bowers__ said:
 > I know she's around 5'5" (65") or 5'7" (67").
-> She has red hair and she drives a Tesla Model S.
+> She has red hair.
 > I know that she attended the SQL Symphony Concert 3 times in December 2017.
 
 ~~~sql
@@ -174,9 +174,7 @@ and
 and 
 	d.height between 65 and 67
 and 
-	f.date between 20171201 and 20171231
-
-Miranda Priestly =99716
+	f.date between 20171201 and 20171231;
 ~~~
 Result:
 |name|hair_color|height|id|event_id|event_name|date|
@@ -184,7 +182,8 @@ Result:
 |Miranda Priestly|red|66|99716|1143|SQL Symphony Concert|20171206|
 |Miranda Priestly|red|66|99716|1143|SQL Symphony Concert|20171212|
 |Miranda Priestly|red|66|99716|1143|SQL Symphony Concert|20171229|
-
+>I know she's around 5'5" (65") or 5'7" (67"). 
+>She has red hair and she drives a Tesla Model S..
 ~~~sql
 SELECT 
 	p.name, p.id,p.address_street_name as stree,p.ssn,
